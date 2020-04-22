@@ -1,0 +1,1 @@
+Object.assign(exports, {"name":"@bokeh/jupyter_bokeh","version":"2.0.0"})

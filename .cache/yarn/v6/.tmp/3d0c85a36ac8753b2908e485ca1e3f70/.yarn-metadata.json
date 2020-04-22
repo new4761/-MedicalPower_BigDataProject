@@ -1,0 +1,73 @@
+{
+  "manifest": {
+    "name": "@bokeh/jupyter_bokeh",
+    "version": "2.0.0",
+    "description": "A Jupyter extension for rendering Bokeh content.",
+    "author": {
+      "name": "Bokeh Team",
+      "email": "info@bokeh.org"
+    },
+    "keywords": [
+      "jupyter",
+      "jupyterlab",
+      "jupyterlab-extension",
+      "bokeh",
+      "bokehjs"
+    ],
+    "license": "BSD-3-Clause",
+    "scripts": {
+      "build": "tsc && webpack -p",
+      "lint": "eslint -c eslint.json src/**/*.ts",
+      "clean": "rimraf dist lib",
+      "prepack": "npm run clean && npm run build",
+      "watch": "tsc -w --listEmittedFiles"
+    },
+    "main": "lib/index.js",
+    "files": [
+      "{dist,lib}/**/*.{js,js.map,d.ts}"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/bokeh/jupyter_bokeh.git"
+    },
+    "dependencies": {
+      "@jupyterlab/application": "^2.0.0",
+      "@jupyterlab/apputils": "^2.0.0",
+      "@jupyterlab/docregistry": "^2.0.0",
+      "@jupyterlab/notebook": "^2.0.0",
+      "@jupyterlab/rendermime-interfaces": "^2.0.0",
+      "@jupyterlab/services": "^5.0.0",
+      "@jupyter-widgets/base": "^3.0.0",
+      "@lumino/coreutils": "^1.3.1",
+      "@lumino/disposable": "^1.3.1",
+      "@lumino/widgets": "^1.9.3"
+    },
+    "devDependencies": {
+      "rimraf": "^3.0.0",
+      "webpack": "^4.41.6",
+      "webpack-cli": "^3.3.11",
+      "typescript": "^3.7.5",
+      "eslint": "^6.8.0",
+      "@typescript-eslint/eslint-plugin": "^2.3.3",
+      "@typescript-eslint/parser": "^2.3.3"
+    },
+    "jupyterlab": {
+      "extension": true
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v6/.tmp/3d0c85a36ac8753b2908e485ca1e3f70/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# jupyter_bokeh\n\nA Jupyter extension for rendering Bokeh content.\n\n## Prerequisites\n\n* Jupyter Lab or Notebook\n\n## Installation\n\nTo install the latest version in Jupyter Lab:\n\n```bash\nconda install -c bokeh jupyter_bokeh\njupyter labextension install @jupyter-widgets/jupyterlab-manager\njupyter labextension install @bokeh/jupyter_bokeh\n```\n\nTo install a specific version:\n\n```bash\njupyter labextension install @bokeh/jupyter_bokeh@x.y.x\n```\n\nOn slow or limited memory systems, one can use `--minimize=False` to reduce compilation\ntimes or make Jupyter Lab build runtime bundles at all.\n\njupyter_bokeh is automatically installed in Jupyter Notebook. In case of a non-standard\nsetup, one can install the extensions with:\n\n```bash\njupyter nbextension install --sys-prefix --symlink --py jupyter_bokeh\njupyter nbextension enable jupyter_bokeh --py --sys-prefix\n```\n\n## Compatibility\n\nThe core [Bokeh](https://github.com/bokeh/bokeh) library is generally version independent of\n[JupyterLab](https://github.com/jupyterlab/jupyterlab) and this ``jupyter_bokeh`` extension\nfor versions of ``bokeh>=2.0.0``.\n\nOur goal is that ``jupyter_bokeh`` minor releases (using the [SemVer](https://semver.org/) pattern) are\nmade to follow JupyterLab minor release bumps and micro releases are for new ``jupyter_bokeh`` features\nor bug fix releases. We've been previously inconsistent with having the extension release minor version bumps\ntrack that of JupyterLab, so users seeking to find extension releases that are compatible with their JupyterLab\ninstallation may refer to the below table.\n\n###### Compatible JupyterLab and `jupyter_bokeh` versions\n\n| JupyterLab    | `jupyter_bokeh`  |\n| ------------- | ---------------- |\n| 0.34.x        | 0.6.2            |\n| 0.35.x        | 0.6.3            |\n| 1.0.x         | 1.0.0            |\n| 2.0.x         | 1.0.0            |\n\n## Development\n\nFor a development install (requires npm version 6 or later), do the following in the repository directory:\n\n```bash\nnpm install\njupyter labextension link .\n```\n\nTo rebuild the package and the JupyterLab app:\n\n```bash\nnpm run build\njupyter lab build\n```\n\nTo incrementally rebuild the extension and JupyterLab after changes you can run\n\n```bash\nnpm run watch\n```\n\nand in another terminal run\n\n```bash\njupyter lab --watch\n```\n\nWhen making a new release for compatibility with a new JupyterLab minor release series, please make a minor\nrelease bump in this extension (i.e. 0.6.3 -> 0.7.0). Conversely, when creating a release for a new feature or bug fix,\nplease make a micro release bump (i.e. 0.6.3 -> 0.6.4).\n\n## Testing\n\nThere is a directory named ``examples`` which contains a collection of notebooks that cover the various ``jupyter_bokeh``\nfunctionalities. If you update the extension for new JupyterLab releases, please manually execute each and check that the\nexpected behavior occurs. If you extend the ``jupyter_bokeh``, please add a new notebook that covers the new functionality.\n",
+    "licenseText": "Copyright (c) 2012 - 2020, Anaconda, Inc., and Bokeh Contributors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification,\nare permitted provided that the following conditions are met:\n\nRedistributions of source code must retain the above copyright notice,\nthis list of conditions and the following disclaimer.\n\nRedistributions in binary form must reproduce the above copyright notice,\nthis list of conditions and the following disclaimer in the documentation\nand/or other materials provided with the distribution.\n\nNeither the name of Anaconda nor the names of any contributors\nmay be used to endorse or promote products derived from this software\nwithout specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF\nTHE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "type": "tarball",
+    "reference": "file:../extensions/bokeh-jupyter_bokeh-2.0.0.tgz",
+    "registry": "npm",
+    "hash": "",
+    "cacheIntegrity": "sha1-NNArC51GNX2QfWAxtutm57X9078="
+  },
+  "registry": "npm",
+  "hash": "34d02b0b9d46357d907d6031b6eb66e7b5fdd3bf"
+}
